@@ -1,9 +1,6 @@
 <template>
-<!--  .prevent -->
-  <form
-    class="form"
-    @submit.prevent="formSubmit"
-  >
+  <!--  .prevent -->
+  <form class="form" @submit.prevent="formSubmit">
     <div class="personal-data" style="display: flex; flex-direction: column">
       <h2>Личные данные</h2>
       <div class="string one">
@@ -92,16 +89,15 @@
           class="radio"
           v-model="sexText"
         />
-        <label for="radio-male" class="label-radio" >Мужской</label>
+        <label for="radio-male" class="label-radio">Мужской</label>
         <input
           type="radio"
           value="Женский"
           id="radio-female"
           class="radio"
           v-model="sexText"
-
         />
-        <label for="radio-female" class="label-radio" >Женский</label>
+        <label for="radio-female" class="label-radio">Женский</label>
       </div>
     </div>
 
@@ -116,10 +112,7 @@
         style="display: flex; flex-direction: column; width: 300px"
         v-click-outside="hideDropdownCitizenship"
       >
-        <div
-          class="dropdown-wrapper"
-          @click="isDropdownCitizenshipOpen=true"
-        >
+        <div class="dropdown-wrapper" @click="isDropdownCitizenshipOpen = true">
           <input
             class="myInput dropdown citizenship"
             v-model="citizenshipText"
@@ -131,13 +124,9 @@
             required
           />
           <div class="triangle"></div>
-
         </div>
 
-        <div
-          class="dropdown"
-          v-if="isDropdownCitizenshipOpen"
-        >
+        <div class="dropdown" v-if="isDropdownCitizenshipOpen">
           <ul class="dropdown-content">
             <li
               v-for="citizenship in filteredCitizenship"
@@ -145,16 +134,16 @@
               class="li-in-content"
               @click="clickHandlerOnCitizenship(citizenship)"
             >
-              {{citizenship.nationality}}
+              {{ citizenship.nationality }}
             </li>
           </ul>
         </div>
-
       </div>
 
-
-
-      <div class="string four" v-if="citizenshipText === 'Россия' || citizenshipText === 'Russia'">
+      <div
+        class="string four"
+        v-if="citizenshipText === 'Россия' || citizenshipText === 'Russia'"
+      >
         <div class="passport serial">
           Серия пасспорта
           <input
@@ -223,12 +212,15 @@
               required
             />
           </div>
-          <div class="input-wrapper passport country-get" v-click-outside="hideDropdownCountryGet">
+          <div
+            class="input-wrapper passport country-get"
+            v-click-outside="hideDropdownCountryGet"
+          >
             Country of issue
 
             <div
               class="dropdown-wrapper"
-              @click="isDropdownCountryGetOpen=true"
+              @click="isDropdownCountryGetOpen = true"
             >
               <input
                 class="myInput dropdown countryGet"
@@ -240,10 +232,7 @@
               <div class="triangle"></div>
             </div>
 
-            <div
-              class="dropdown"
-              v-if="isDropdownCountryGetOpen"
-            >
+            <div class="dropdown" v-if="isDropdownCountryGetOpen">
               <ul class="dropdown-content">
                 <li
                   v-for="citizen in citizenshipsData"
@@ -251,11 +240,10 @@
                   class="li-in-content"
                   @click="clickHandlerOnCountryGetOpen(citizen.flag)"
                 >
-                  {{citizen.flag}}
+                  {{ citizen.flag }}
                 </li>
               </ul>
             </div>
-
           </div>
 
           <div
@@ -266,34 +254,30 @@
 
             <div
               class="dropdown-wrapper"
-              @click="isDropdownPassTypeOpen=true"
+              @click="isDropdownPassTypeOpen = true"
             >
               <input
                 class="myInput dropdown passType"
                 placeholder="Type"
                 v-model="passportTypeText"
-                @focus="isDropdownPassTypeOpen=true"
+                @focus="isDropdownPassTypeOpen = true"
                 required
               />
               <div class="triangle"></div>
             </div>
 
-            <div
-              class="dropdown"
-              v-if="isDropdownPassTypeOpen"
-            >
+            <div class="dropdown" v-if="isDropdownPassTypeOpen">
               <ul class="dropdown-content">
                 <li
                   v-for="passport in passportTypesData"
                   :key="passport.id"
-                   class="li-in-content"
+                  class="li-in-content"
                   @click="clickHandlerOnPassportType(passport.type)"
                 >
-                  {{passport.type}}
+                  {{ passport.type }}
                 </li>
               </ul>
             </div>
-
           </div>
         </div>
       </div>
@@ -322,7 +306,6 @@
           v-model="isChanged"
         />
         <label for="radio-yes" class="label-radio">Да</label>
-
       </div>
       <div class="isChanged" v-if="isChanged === 'true'">
         <div class="string six">
@@ -353,19 +336,34 @@
       </div>
     </div>
 
-<!--    <div-->
-<!--      v-show="firstName && secondName && patronymicName"-->
-<!--      style="display: flex; justify-content: space-between; align-items: center"-->
-<!--    >-->
-<!--      <div style="margin-right: 20px">-->
-<!--        Я, {{ secondName }} {{ firstName }} {{ patronymicName }} соглашаюсь-->
-<!--        отправить форму-->
-<!--      </div>-->
-<!--      <button style="height: 30px">Отправить</button>-->
-<!--    </div>-->
-    <div style="display: flex;justify-content: center; align-items: center; flex-direction: column">
-      <div v-if="ifSubmited" class="ifSubmited" style="margin-bottom: 10px;min-height: 20px"> {{ifSubmited}}</div>
-      <button class="c-button" style="height: 30px;max-width: fit-content">Отправить</button>
+    <!--    <div-->
+    <!--      v-show="firstName && secondName && patronymicName"-->
+    <!--      style="display: flex; justify-content: space-between; align-items: center"-->
+    <!--    >-->
+    <!--      <div style="margin-right: 20px">-->
+    <!--        Я, {{ secondName }} {{ firstName }} {{ patronymicName }} соглашаюсь-->
+    <!--        отправить форму-->
+    <!--      </div>-->
+    <!--      <button style="height: 30px">Отправить</button>-->
+    <!--    </div>-->
+    <div
+      style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      "
+    >
+      <div
+        v-if="ifSubmited"
+        class="ifSubmited"
+        style="margin-bottom: 10px; min-height: 20px"
+      >
+        {{ ifSubmited }}
+      </div>
+      <button class="c-button" style="height: 30px; max-width: fit-content">
+        Отправить
+      </button>
     </div>
   </form>
 </template>
@@ -373,20 +371,20 @@
 <script>
 import citizenships from "@/assets/data/citizenships.json";
 import passportTypes from "@/assets/data/passport-types.json";
-import {debounce} from "@/helpers/debounce";
+import { debounce } from "@/helpers/debounce";
 import ClickOutside from "vue-click-outside";
 
 export default {
-  directives:{
-    ClickOutside
+  directives: {
+    ClickOutside,
   },
   data() {
     return {
       citizenshipsData: [],
-      filteredCitizenship:[],
-      passportTypesData:[],
-      submitDataRus:{},
-      submitDataInt:{},
+      filteredCitizenship: [],
+      passportTypesData: [],
+      submitDataRus: {},
+      submitDataInt: {},
       firstName: "",
       firstNameChanged: "",
       firstNameLatin: "",
@@ -406,10 +404,10 @@ export default {
       sexText: "",
       isChanged: "false",
       ifSubmited: "",
-      maxYear:null,
-      maxMonth:null,
-      maxDay:null,
-      maxDate:"",
+      maxYear: null,
+      maxMonth: null,
+      maxDay: null,
+      maxDate: "",
       isDropdownPassTypeOpen: false,
       isDropdownCountryGetOpen: false,
       isDropdownCitizenshipOpen: false,
@@ -417,13 +415,12 @@ export default {
     };
   },
   created() {
-    this.debouncedSearch = debounce(this.filterCitizenships,500);
+    this.debouncedSearch = debounce(this.filterCitizenships, 500);
     const Data = new Date();
     this.maxYear = Data.getFullYear();
     this.maxMonth = Data.getMonth() + 1;
     this.maxDay = Data.getDate();
     this.maxDate = `${this.maxYear}-${this.maxMonth}-${this.maxDay}`;
-
   },
   mounted() {
     this.citizenshipsData = citizenships;
@@ -432,38 +429,37 @@ export default {
     this.sexText = "Мужской";
   },
   methods: {
-    hideDropdownPassType(){
-      this.isDropdownPassTypeOpen=false;
+    hideDropdownPassType() {
+      this.isDropdownPassTypeOpen = false;
     },
-    hideDropdownCountryGet(){
+    hideDropdownCountryGet() {
       this.isDropdownCountryGetOpen = false;
     },
-    hideDropdownCitizenship(){
+    hideDropdownCitizenship() {
       this.isDropdownCitizenshipOpen = false;
     },
-    clickHandlerOnPassportType(type){
+    clickHandlerOnPassportType(type) {
       this.passportTypeText = type;
       this.isDropdownPassTypeOpen = false;
     },
-    clickHandlerOnCountryGetOpen(country){
+    clickHandlerOnCountryGetOpen(country) {
       this.countryGet = country;
       this.isDropdownCountryGetOpen = false;
     },
-    clickHandlerOnCitizenship(citizenship){
+    clickHandlerOnCitizenship(citizenship) {
       this.citizenshipText = citizenship.nationality;
       this.countryGet = citizenship.flag;
       this.isDropdownCitizenshipOpen = false;
     },
-    inputCitizenshipHandler(citizenshipText){
-
+    inputCitizenshipHandler(citizenshipText) {
       //this.filterCitizenships(citizenshipText);
 
       this.debouncedSearch(citizenshipText);
 
       this.isDropdownCitizenshipOpen = true;
     },
-    filterCitizenships(element){
-      console.log("Searching " + element + " in citizenships...")
+    filterCitizenships(element) {
+      console.log("Searching " + element + " in citizenships...");
 
       // this.filteredCitizenship = citizenshipData.map(el => {
       //   if ((element === el.nationality)||(el.nationality.includes(element))) {
@@ -471,13 +467,20 @@ export default {
       //   }else return "";
       // })
 
-      this.filteredCitizenship = this.citizenshipsData.filter(el => (element.toUpperCase() === el.nationality.toUpperCase())||(el.nationality.toUpperCase().includes(element.toUpperCase())))
+      this.filteredCitizenship = this.citizenshipsData.filter(
+        (el) =>
+          element.toUpperCase() === el.nationality.toUpperCase() ||
+          el.nationality.toUpperCase().includes(element.toUpperCase())
+      );
 
       //console.log(this.filteredCitizenship);
     },
-    formSubmit: function() {
+    formSubmit: function () {
       let json;
-      if (this.citizenshipText === "Россия" || this.citizenshipText === "Russia") {
+      if (
+        this.citizenshipText === "Россия" ||
+        this.citizenshipText === "Russia"
+      ) {
         this.submitDataRus = {
           firstname: this.firstName,
           lastname: this.secondName,
@@ -492,11 +495,13 @@ export default {
           date_of_issue: this.dateGet,
         };
 
-        if(this.isChanged === "true"){
+        if (this.isChanged === "true") {
           this.submitDataRus.is_changed_bio = "true";
-          this.submitDataRus.previos_lastname =this.secondNameChanged;
-          this.submitDataRus.previos_firstname =this.firstNameChanged;
-        } else {this.submitDataRus.is_changed_bio = false }
+          this.submitDataRus.previos_lastname = this.secondNameChanged;
+          this.submitDataRus.previos_firstname = this.firstNameChanged;
+        } else {
+          this.submitDataRus.is_changed_bio = false;
+        }
 
         json = JSON.stringify(this.submitDataRus);
       } else {
@@ -513,23 +518,23 @@ export default {
           name_latin: this.firstNameLatin,
           passport_number: this.passportNumberLatin,
           country_of_issue: this.countryGet,
-          passport_type: this.passportTypeText
+          passport_type: this.passportTypeText,
         };
-        if(this.isChanged === "true"){
+        if (this.isChanged === "true") {
           this.submitDataInt.is_changed_bio = "true";
-          this.submitDataInt.previos_lastname =this.secondNameChanged;
-          this.submitDataInt.previos_firstname =this.firstNameChanged;
-        } else {this.submitDataInt.is_changed_bio = false}
+          this.submitDataInt.previos_lastname = this.secondNameChanged;
+          this.submitDataInt.previos_firstname = this.firstNameChanged;
+        } else {
+          this.submitDataInt.is_changed_bio = false;
+        }
 
         json = JSON.stringify(this.submitDataInt);
       }
       console.log(json);
-      this.ifSubmited="Отправлено! / Send!";
-    }
+      this.ifSubmited = "Отправлено! / Send!";
+    },
   },
-  computed: {
-
-  },
+  computed: {},
 };
 </script>
 
@@ -570,7 +575,7 @@ input {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-.dropdown-wrapper{
+.dropdown-wrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -583,19 +588,19 @@ input {
   margin-top: 10px;
   background: #cacaca;
 }
-.string.four{
+.string.four {
   margin-top: 5px;
 }
-.myInput::placeholder{
+.myInput::placeholder {
   color: #d7d7d7;
 }
-.myInput.dropdown{
+.myInput.dropdown {
   width: 100%;
   border: none;
   border-radius: 4px;
 }
-.myInput.dropdown:focus{
-  outline: none
+.myInput.dropdown:focus {
+  outline: none;
 }
 
 .input-wrapper {
@@ -614,7 +619,6 @@ h3 {
   margin-bottom: 8px;
   margin-top: 2px;
 }
-
 
 .line {
   margin-bottom: 5px;
@@ -638,13 +642,12 @@ h3 {
   min-width: 100%;
   max-height: 150px;
   border-radius: 6px;
-  padding: 0 ;
+  padding: 0;
   z-index: 1;
-  margin:0;
+  margin: 0;
   overflow: auto;
-
 }
-.li-in-content{
+.li-in-content {
   box-shadow: 0px 0px 5px 1px rgba(0, 23, 191, 0.1);
   border: 1px solid #d7d7d7;
   background: white;
@@ -653,9 +656,9 @@ h3 {
   min-height: 30px;
   display: flex;
   align-items: center;
-  font-size:15px;
+  font-size: 15px;
 }
-.li-in-content:hover{
+.li-in-content:hover {
   border-radius: 6px;
   background-color: #eef0ff;
   cursor: pointer;
@@ -693,19 +696,19 @@ h3 {
   background: white;
   color: black;
 }
-.triangle:hover{
+.triangle:hover {
   cursor: pointer;
 }
-.myInput:valid{
+.myInput:valid {
   background: #eeffee;
 }
-.myInput:invalid{
+.myInput:invalid {
   background: #ffe3e3;
 }
-.myInput:placeholder-shown{
+.myInput:placeholder-shown {
   background: white;
 }
-.myInput.date{
+.myInput.date {
   font-family: "Roboto", sans-serif;
   color: #d7d7d7;
   background: white;
@@ -722,12 +725,11 @@ h3 {
   margin-right: 5px;
 }
 
-.myInput.date:valid{
+.myInput.date:valid {
   color: black;
   background: #eeffee;
 }
-.myInput.date:invalid{
+.myInput.date:invalid {
   outline-color: #ff9b9b;
 }
-
 </style>
